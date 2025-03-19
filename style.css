@@ -1,0 +1,229 @@
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.5px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.announcements-container {
+    margin: 40px auto;
+    padding: 0 40px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.announcement-item {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.announcement-item:hover {
+    transform: translateY(-2px);
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.announcement-header strong {
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.announcement-date {
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.announcement-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #34495e;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    margin: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #3498db;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    color: #2980b9;
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.company-info {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.company-info p {
+    margin: 0;
+    text-align: left;
+    max-width: 100%;
+    line-height: 1.8;
+    font-size: 18px;
+    color: #34495e;
+}
+
+.company-info p:first-child {
+    font-size: 36px;
+    font-weight: 800;
+    color: #2c3e50;
+    letter-spacing: -1.5px;
+    margin-bottom: 40px;
+}
+
+.company-info p:nth-child(2) {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #5a6c7d;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+.contact-container {
+    margin-top: 60px;
+    padding: 40px;
+    background: transparent;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.contact-container p {
+    font-size: 16px;
+    margin: 0;
+    text-align: left;
+    color: #3498db;
+    font-weight: 500;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 0;
+        font-size: 16px;
+    }
+    
+    main {
+        width: 100%;
+        max-width: none;
+        padding: 20px;
+    }
+    
+    .company-info,
+    .contact-container {
+        padding: 40px 20px;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .company-info p:first-child {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+    
+    .company-info p {
+        font-size: 16px;
+    }
+    
+    .contact-container p {
+        font-size: 14px;
+    }
+
+    [href="announcements.html"] {
+        padding: 10px 15px !important;
+    }
+
+    [href="announcements.html"] span {
+        font-size: 24px !important;
+    }
+}
+
+
+.announcement-banner {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 20px 40px;
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.announcement-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: #fff;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.announcement-link:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
