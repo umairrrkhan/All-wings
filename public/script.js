@@ -64,4 +64,55 @@ function initializeAnnouncementSystem() {
 }
 
 // Initialize the announcement system when the page loads
-document.addEventListener('DOMContentLoaded', initializeAnnouncementSystem);
+document.addEventListener('DOMContentLoaded', function() {
+    const companyInfo = document.querySelector('.company-info');
+    const announcements = document.querySelectorAll('.announcement-item');
+
+    // Mouse move parallax effect
+    document.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const x = Math.round((clientX / window.innerWidth) * 100);
+        const y = Math.round((clientY / window.innerHeight) * 100);
+
+        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+        document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+
+        if (companyInfo) {
+            const rect = companyInfo.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const angleX = (centerY - clientY) / 30;
+            const angleY = (clientX - centerX) / 30;
+            
+            companyInfo.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        }
+    });
+
+    // Smooth transform reset
+    document.addEventListener('mouseleave', () => {
+        if (companyInfo) {
+            companyInfo.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        }
+    });
+
+    // Add tilt effect to announcements
+    announcements.forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const angleX = (centerY - y) / 20;
+            const angleY = (x - centerX) / 20;
+            
+            item.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(30px)`;
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    });
+});
