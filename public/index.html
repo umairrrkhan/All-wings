@@ -4,16 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="noindex, nofollow">  <!-- Consider removing this in production -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-random123'; style-src 'self' 'nonce-random123'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self';">
+    <!-- CSP is good, but nonce is tricky to implement correctly.  Consider removing 'nonce-random123' -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
     <title>All Wings AI - Coming Soon</title>
-    <link rel="stylesheet" href="style.css" nonce="random123">
-    <script src="script.min.js" defer nonce="random123"></script>
+    <link rel="stylesheet" href="style.css">  <!-- Removed nonce, as it's hard to manage -->
+    <script src="script.min.js" defer></script> <!-- Removed nonce -->
+    <script src="script.js" defer></script>    <!-- Moved your script to head, added defer -->
+
+
+    <!-- Firebase SDK - Keep this, but configure it correctly -->
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.4.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.4.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.4.0/firebase-performance-compat.js"></script>
+    <!--
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=false"></script> <!-- Changed to false -->
+
 </head>
 <body>
     <div class="announcement-banner">
@@ -29,10 +52,22 @@
             <p>We're scrappy, we're bold, and we're just getting started. Want to join the chaos? Hit us up!</p>
         </div>
         <div class="contact-container">
-            <p style="color: blue;"><a href="contact.html" style="color: blue;">Contact Us</a></p>
-            <p style="color: blue;"><a href="terms-and-policies.html" style="color: blue;">Terms and Policies</a></p>
+            <p><a href="contact.html">Contact Us</a></p> <!-- Removed unnecessary color styles -->
+            <p><a href="terms-and-policies.html">Terms and Policies</a></p> <!-- Removed unnecessary color styles -->
         </div>
     </main>
-    <script src="script.js"></script>
+    <!-- Removed the duplicate script tag.  It's now in the head. -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      //Removed the loading text
+        try {
+          let app = firebase.app();
+
+        } catch (e) {
+          console.error(e);
+          //Removed the loading text.
+        }
+      });
+    </script>
 </body>
 </html>
